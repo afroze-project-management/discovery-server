@@ -29,7 +29,7 @@ sonarqube {
         property "sonar.projectKey", "afroze-project-management_discovery-server"
         property "sonar.organization", "afroze-project-management"
         property "sonar.host.url", "https://sonarcloud.io"
-        property "sonar.projectname", "Discovery Server"
+        property "sonar.projectName", "Discovery Server"
     }
 }
 
