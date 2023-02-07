@@ -11,3 +11,5 @@ eureka:
     fetch-registry: false
   instance:
     hostname: localhost
+  server:
+    response-cache-update-interval-ms: 5000
