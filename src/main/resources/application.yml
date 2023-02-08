@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: pm-discovery-server
+  main:
+    banner-mode: off
 
 eureka:
   client:
@@ -13,3 +15,7 @@ eureka:
     hostname: localhost
   server:
     response-cache-update-interval-ms: 5000
+
+logging:
+  file:
+    name: logs\discovery-server.log
