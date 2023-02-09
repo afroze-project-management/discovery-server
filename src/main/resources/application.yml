@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:8761}
+  port: ${DISCOVERY_SERVER_PORT}
 
 spring:
   application:
@@ -11,8 +11,6 @@ eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
-  instance:
-    hostname: localhost
   server:
     response-cache-update-interval-ms: 5000
 
