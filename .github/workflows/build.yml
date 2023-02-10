@@ -79,3 +79,5 @@ jobs:
           task-definition: task-definition.json
           service: discovery-server
           cluster: project-management
+        env:
+          ACTIONS_STEP_DEBUG: true
