@@ -23,7 +23,6 @@ jobs:
           aws-secret-access-key: ${{ secrets.SECRET_KEY }}
           aws-region: us-east-1
 
-
       - name: Login to ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -35,12 +34,12 @@ jobs:
         with:
           java-version: 17
 
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v1
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
+#       - name: Cache SonarCloud packages
+#         uses: actions/cache@v1
+#         with:
+#           path: ~/.sonar/cache
+#           key: ${{ runner.os }}-sonar
+#           restore-keys: ${{ runner.os }}-sonar
 
       - name: Cache Gradle packages
         uses: actions/cache@v1
@@ -49,11 +48,13 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}
           restore-keys: ${{ runner.os }}-gradle
 
-      - name: Build and analyze
-        env:
-          GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}  # Needed to get PR information, if any
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: ./gradlew build test jacocoTestReport sonarqube --info
+#       - name: Build and analyze
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}  # Needed to get PR information, if any
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+#         run: ./gradlew build test jacocoTestReport sonarqube --info
+      - name: Build v2
+        run: ./gradlew clean build
       
       - name: Build Docker
         id: build-image
