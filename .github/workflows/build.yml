@@ -78,6 +78,6 @@ jobs:
         with:
           task-definition: task-definition.json
           service: discovery-server
-          cluster: project-management
+          cluster: arn:aws:ecs:us-east-2:071571530772:cluster/project-management
         env:
           ACTIONS_STEP_DEBUG: true
