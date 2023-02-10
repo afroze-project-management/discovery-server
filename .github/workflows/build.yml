@@ -73,19 +73,6 @@ jobs:
           docker push $ECR_REGISTRY/$REGISTRY_ALIAS/discovery-server:latest
           echo "name=image::$ECR_REGISTRY/discovery-server:$IMAGE_TAG" >> $GITHUB_OUTPUT
 
-      - name: Download task definition v2
-        uses: ItsKarma/aws-cli@v1.70.0
-        with:
-          args: ecs describe-task-definition --task-definition discovery-server-2023-02-10 --query taskDefinition > task-definition.json
-        env:
-            AWS_ACCESS_KEY_ID: ${{ secrets.ACCESS_KEY }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.SECRET_KEY }}
-            AWS_DEFAULT_REGION: "us-east-1"
-
-#       - name: Download task definition
-#         run: |
-#           aws ecs describe-task-definition --task-definition discovery-server-2023-02-10 --query taskDefinition > task-definition.json
-
       - name: Deploy ECS Task Definition
         uses: aws-actions/amazon-ecs-deploy-task-definition@df9643053eda01f169e64a0e60233aacca83799a
         with:
