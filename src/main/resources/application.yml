@@ -17,3 +17,5 @@ eureka:
 logging:
   file:
     name: logs\discovery-server.log
+  level:
+    org: WARN
