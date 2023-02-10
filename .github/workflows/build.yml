@@ -53,6 +53,7 @@ jobs:
 #           GITHUB_TOKEN: ${{ secrets.PR_TOKEN }}  # Needed to get PR information, if any
 #           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 #         run: ./gradlew build test jacocoTestReport sonarqube --info
+
       - name: Build v2
         run: ./gradlew clean build
       
