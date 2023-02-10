@@ -16,7 +16,7 @@ public class DiscoveryServerApplication {
 	 * @param args command line arguments
 	 */
 	public static void main(String[] args) {
-		System.out.println("this should get deployed automatically on git push");
+		System.out.println("this should get deployed automatically on git push?");
 		SpringApplication.run(DiscoveryServerApplication.class, args);
 	}
 }
