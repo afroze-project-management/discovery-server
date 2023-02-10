@@ -21,7 +21,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.SECRET_KEY }}
-          aws-region: us-east-1
+          aws-region: us-east-2
 
       - name: Login to ECR
         id: login-ecr
@@ -78,6 +78,6 @@ jobs:
         with:
           task-definition: task-definition.json
           service: discovery-server
-          cluster: arn:aws:ecs:us-east-1:071571530772:cluster/project-management
+          cluster: arn:aws:ecs:us-east-2:071571530772:cluster/project-management
         env:
           ACTIONS_STEP_DEBUG: true
