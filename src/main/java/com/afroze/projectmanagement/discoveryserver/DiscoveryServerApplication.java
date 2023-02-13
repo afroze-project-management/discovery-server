@@ -1,8 +1,12 @@
 package com.afroze.projectmanagement.discoveryserver;
 
+import com.netflix.appinfo.AmazonInfo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.commons.util.InetUtils;
+import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+import org.springframework.context.annotation.Bean;
 
 /**
  * Eureka Server for Project Management App
@@ -17,5 +21,13 @@ public class DiscoveryServerApplication {
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(DiscoveryServerApplication.class, args);
+	}
+
+	@Bean
+	public EurekaInstanceConfigBean eurekaInstanceConfig(InetUtils inetUtils) {
+		EurekaInstanceConfigBean bean = new EurekaInstanceConfigBean(inetUtils);
+		AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
+		bean.setDataCenterInfo(info);
+		return bean;
 	}
 }
