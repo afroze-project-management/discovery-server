@@ -79,7 +79,7 @@
     "requiresCompatibilities": [
         "FARGATE"
     ],
-    "cpu": "256",
+    "cpu": "1024",
     "memory": "2048",
     "registeredAt": "2023-02-10T17:17:02.302000+05:00",
     "registeredBy": "arn:aws:iam::071571530772:root"

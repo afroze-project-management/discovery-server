@@ -8,6 +8,9 @@ import org.springframework.cloud.netflix.eureka.EurekaInstanceConfigBean;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 import org.springframework.context.annotation.Bean;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * Eureka Server for Project Management App
  */
@@ -25,9 +28,18 @@ public class DiscoveryServerApplication {
 
 	@Bean
 	public EurekaInstanceConfigBean eurekaInstanceConfig(InetUtils inetUtils) {
-		EurekaInstanceConfigBean bean = new EurekaInstanceConfigBean(inetUtils);
-		AmazonInfo info = AmazonInfo.Builder.newBuilder().autoBuild("eureka");
-		bean.setDataCenterInfo(info);
-		return bean;
+		EurekaInstanceConfigBean config = new EurekaInstanceConfigBean(inetUtils);
+		String ip = null;
+		try {
+			ip = InetAddress.getLocalHost().getHostAddress();
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+
+		config.setIpAddress(ip);
+		config.setPreferIpAddress(true);
+
+
+		return config;
 	}
 }
